@@ -2,28 +2,16 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    private PlayerMovement playerMovement; // PlayerMovement referansı
-    private float forwardSpeed; // Sürekli ileri hareket hızı
+    [SerializeField] private Transform target; // Hedef pozisyon (örneğin oyuncu)
+    [SerializeField] private Vector3 offset; // Kamera ile oyuncu arasındaki mesafe
+    [SerializeField] private float followSpeed = 5f; // Kameranın oyuncuyu takip etme hızı
 
-    private void Awake()
+    private void LateUpdate()
     {
-        // PlayerMovement bileşenine referans al
-        playerMovement = FindObjectOfType<PlayerMovement>();
+        if (target == null) return;
 
-        if (playerMovement != null)
-        {
-            forwardSpeed = playerMovement.ForwardSpeed; // ForwardSpeed'i al
-        }
-        else
-        {
-            Debug.LogError("PlayerMovement bulunamadı!");
-        }
-    }
-
-    void Update()
-    {
-        // Sürekli ileri hareket
-        Vector3 forwardMovement = new Vector3(0, 0, forwardSpeed * Time.deltaTime);
-        this.transform.position += forwardMovement;
+        // Hedef pozisyona doğru smooth hareket
+        Vector3 desiredPosition = target.position + offset;
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
     }
 }
