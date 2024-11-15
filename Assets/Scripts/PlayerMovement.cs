@@ -3,10 +3,10 @@ using UnityEngine;
 public class PlayerMovement : Observer
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private Transform playerTransform;
-    [SerializeField] private float moveDuration = 0.2f; // Hareketin süresi
-    [SerializeField] private float forwardSpeed = 5f; // Sürekli ileri hareket hızı
+    [SerializeField] private Transform playerTransform;[SerializeField] private float forwardSpeed = 5f; // Alan (Unity ile serileştirilecek)
+    public float ForwardSpeed => forwardSpeed;       // Salt okunur property
     [SerializeField] private float laneWidth = 2f; // Şerit genişliği
+    [SerializeField] private float horizontalSpeed = 10f; // Sağa/Sola hareket hızı
     private Vector3 targetPosition;
 
     private void Awake()
@@ -17,12 +17,20 @@ public class PlayerMovement : Observer
 
     private void Update()
     {
-        // Sürekli ileri hareket
+        // Sürekli ileri hareket (z ekseni)
         Vector3 forwardMovement = new Vector3(0, 0, forwardSpeed * Time.deltaTime);
         playerTransform.position += forwardMovement;
 
-        // Şerit değişikliği için pozisyonu smooth bir şekilde güncelle
-        playerTransform.position = Vector3.MoveTowards(playerTransform.position, targetPosition, Time.deltaTime / moveDuration);
+        // Sadece yatay eksen (x) için hedef pozisyona doğru hareket
+        playerTransform.position = Vector3.Lerp(
+            playerTransform.position, 
+            new Vector3(targetPosition.x, playerTransform.position.y, playerTransform.position.z), 
+            horizontalSpeed * Time.deltaTime
+        );
+
+        // Pozisyonu sınırla (x ekseni için)
+        float clampedX = Mathf.Clamp(playerTransform.position.x, -2f, 2f); // x sınırlarını -2 ile 2 arasında tut
+        playerTransform.position = new Vector3(clampedX, playerTransform.position.y, playerTransform.position.z);
     }
 
     public override void OnNotify(NotificationTypes type)
