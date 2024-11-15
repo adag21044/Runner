@@ -5,9 +5,9 @@ public class PlayerMovement : Observer
     [SerializeField] private Animator animator;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float moveDuration = 0.2f; // Hareketin süresi
+    [SerializeField] private float forwardSpeed = 5f; // Sürekli ileri hareket hızı
+    [SerializeField] private float laneWidth = 2f; // Şerit genişliği
     private Vector3 targetPosition;
-    private bool isMoving = false;
-    [SerializeField] private float moveSpeed = 5f;
 
     private void Awake()
     {
@@ -17,29 +17,16 @@ public class PlayerMovement : Observer
 
     private void Update()
     {
-        if (isMoving)
-        {   
-            // Player'ın z ekseninde hareket etmesini sağla
-            Vector3 currentPosition = playerTransform.position;
-            currentPosition.z += moveSpeed * Time.deltaTime;
-            playerTransform.position = currentPosition;
+        // Sürekli ileri hareket
+        Vector3 forwardMovement = new Vector3(0, 0, forwardSpeed * Time.deltaTime);
+        playerTransform.position += forwardMovement;
 
-            // Pozisyonu smooth bir şekilde güncelle
-            playerTransform.position = Vector3.Lerp(playerTransform.position, targetPosition, Time.deltaTime / moveDuration);
-
-            // Hedef pozisyona ulaşıldığında hareketi durdur
-            if (Vector3.Distance(playerTransform.position, targetPosition) < 0.01f)
-            {
-                playerTransform.position = targetPosition; // Pozisyonu tam olarak hedefe eşitle
-                isMoving = false; // Hareketi durdur
-            }
-        }
+        // Şerit değişikliği için pozisyonu smooth bir şekilde güncelle
+        playerTransform.position = Vector3.MoveTowards(playerTransform.position, targetPosition, Time.deltaTime / moveDuration);
     }
 
     public override void OnNotify(NotificationTypes type)
     {
-        if (isMoving) return; // Eğer hala hareket ediyorsa başka bir hareket tetiklenmesin
-
         switch (type)
         {
             case NotificationTypes.Up:
@@ -52,16 +39,31 @@ public class PlayerMovement : Observer
                 break;
             case NotificationTypes.Left:
                 Debug.Log("Player sola hareket ediyor.");
-                targetPosition = new Vector3(playerTransform.position.x - 1, playerTransform.position.y, playerTransform.position.z);
-                animator.SetTrigger("MoveLeft");
-                isMoving = true;
+                if (!IsAtLeftmostLane())
+                {
+                    targetPosition = new Vector3(targetPosition.x - laneWidth, targetPosition.y, targetPosition.z);
+                    animator.SetTrigger("MoveLeft");
+                }
                 break;
             case NotificationTypes.Right:
                 Debug.Log("Player sağa hareket ediyor.");
-                targetPosition = new Vector3(playerTransform.position.x + 1, playerTransform.position.y, playerTransform.position.z);
-                animator.SetTrigger("MoveRight");
-                isMoving = true;
+                if (!IsAtRightmostLane())
+                {
+                    targetPosition = new Vector3(targetPosition.x + laneWidth, targetPosition.y, targetPosition.z);
+                    animator.SetTrigger("MoveRight");
+                }
                 break;
         }
+    }
+
+    // Şerit sınırlarını kontrol et
+    private bool IsAtLeftmostLane()
+    {
+        return targetPosition.x <= -laneWidth; // Sol şerit sınırını belirleyin
+    }
+
+    private bool IsAtRightmostLane()
+    {
+        return targetPosition.x >= laneWidth; // Sağ şerit sınırını belirleyin
     }
 }
