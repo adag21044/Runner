@@ -8,7 +8,11 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (target == null) return;
+        if (target == null)
+        {
+            Debug.LogError("CameraFollow: Takip edilecek hedef atanmadı!");
+            return;
+        }
 
         // Hedef pozisyona doğru smooth hareket
         Vector3 desiredPosition = target.position + offset;

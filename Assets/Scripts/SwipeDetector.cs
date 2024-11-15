@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 
@@ -40,6 +41,11 @@ public class SwipeDetector : Subject
             if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y))
             {
                 Notify(swipeDelta.x > 0 ? NotificationTypes.Right : NotificationTypes.Left);
+            }
+
+            if(Mathf.Abs(swipeDelta.x) < Mathf.Abs(swipeDelta.y))
+            {
+                Notify(swipeDelta.y > 0 ? NotificationTypes.Up : NotificationTypes.Down);
             }
         }
     }
