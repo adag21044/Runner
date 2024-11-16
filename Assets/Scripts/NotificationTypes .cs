@@ -4,5 +4,6 @@ public enum NotificationTypes
     Left, // Move left
     Down, // Move backward
     Right,  // Move right
-    Collect // Collectible interaction
+    Collect, // Collectible interaction
+    Magnet, // Magnet interaction
 }
