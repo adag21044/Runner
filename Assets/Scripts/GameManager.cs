@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Centralizes game management. Handles player and swipe detector setup.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private SwipeDetector swipeDetector;
@@ -9,11 +12,11 @@ public class GameManager : MonoBehaviour
     {
         if (swipeDetector == null || player == null)
         {
-            Debug.LogError("Gerekli bileşenler atanmadı!");
+            Debug.LogError("GameManager: Required components are missing!");
             return;
         }
 
-        // Swipe hareketlerini dinlemesi için Player'ı SwipeDetector'a bağla
+        // Register the player as an observer of swipe events
         swipeDetector.RegisterObserver(player);
     }
 }

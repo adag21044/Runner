@@ -1,6 +1,10 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
+
+/// <summary>
+/// Detects swipe gestures and notifies observers.
+/// Implements Subject in the Observer Pattern.
+/// </summary>
 
 public class SwipeDetector : Subject
 {
