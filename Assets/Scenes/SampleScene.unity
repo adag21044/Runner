@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 350052964}
   m_Layer: 0
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1760,6 +1760,8 @@ MonoBehaviour:
   target: {fileID: 1470247891}
   offset: {x: 0, y: 2.25, z: -2.5}
   followSpeed: 5
+  zoomOutDistance: 5
+  zoomSpeed: 2
 --- !u!1 &998940148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,6 +2546,7 @@ MonoBehaviour:
   laneWidth: 2
   horizontalSpeed: 10
   jumpForce: 5
+  cameraFollow: {fileID: 963194229}
 --- !u!54 &1470247893
 Rigidbody:
   m_ObjectHideFlags: 0

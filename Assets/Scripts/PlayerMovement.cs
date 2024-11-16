@@ -8,19 +8,36 @@ public class PlayerMovement : Observer
     [SerializeField] private float laneWidth = 2f; // Şerit genişliği
     [SerializeField] private float horizontalSpeed = 10f; // Sağa/Sola hareket hızı
     [SerializeField] private float jumpForce = 2.5f; // Zıplama kuvveti
+    [SerializeField] private CameraFollow cameraFollow; // Kamera kontrolü için referans
+
     private Vector3 targetPosition;
     private Rigidbody rb; // Rigidbody referansı
     private bool isGrounded = true; // Karakterin yere değip değmediğini kontrol eder
+    private bool isGameOver = false; // Oyun durumu kontrolü
+    private bool isHitAnimationPlaying = false; // Çarpma animasyonunun oynadığını kontrol eder
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         targetPosition = playerTransform.position;
+
+        if (cameraFollow == null)
+        {
+            Debug.LogError("PlayerMovement: Kamera referansı atanmadı!");
+        }
     }
 
     private void Update()
     {
+        if (isGameOver) return; // Oyun bittiğinde hareket durdurulur
+
+        if (isHitAnimationPlaying) // Çarpma animasyonu oynuyorsa diğer hareketler yapılmasın
+        {
+            CheckHitAnimationEnd(); // Çarpma animasyonu bittiyse durumu kontrol et
+            return;
+        }
+
         MoveForward();
         MoveHorizontally();
     }
@@ -45,6 +62,8 @@ public class PlayerMovement : Observer
 
     public override void OnNotify(NotificationTypes type)
     {
+        if (isGameOver || isHitAnimationPlaying) return; // Oyun veya çarpma sırasında hareket yok
+
         Debug.Log($"PlayerMovement: {type} bildirimi alındı.");
         switch (type)
         {
@@ -75,19 +94,44 @@ public class PlayerMovement : Observer
         if (isGrounded) // Yerdeyse zıplama işlemini gerçekleştir
         {
             Debug.Log("PlayerMovement: Zıplama tetiklendi.");
-            animator.SetTrigger("Jumped"); // Zıplama animasyonunu tetikle
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // Yukarı doğru kuvvet uygula
-            isGrounded = false; // Karakterin havada olduğunu belirt
+            animator.SetTrigger("Jumped");
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Eğer yere çarparsa karakter yere geri döner
         if (collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("PlayerMovement: Karakter yere indi.");
             isGrounded = true;
         }
+
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Debug.Log("PlayerMovement: Karakter engelle çarpıştı.");
+            animator.SetTrigger("HitToWall");
+            isHitAnimationPlaying = true; // Çarpma animasyonu oynatılıyor
+        }
+    }
+
+    private void CheckHitAnimationEnd()
+    {
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0); // 0: Base Layer
+        if (stateInfo.IsName("Hit To Head") && stateInfo.normalizedTime >= 1.0f)
+        {
+            Debug.Log("PlayerMovement: Hit To Head animasyonu bitti.");
+            StopAllAnimationsAndGame(); // Oyunu ve animasyonları durdur
+        }
+    }
+
+    private void StopAllAnimationsAndGame()
+    {
+        Debug.Log("PlayerMovement: Tüm animasyonlar ve hareket durduruldu.");
+        isGameOver = true; // Oyun durumunu güncelle
+        forwardSpeed = 0f; // Hareketi durdur
+        horizontalSpeed = 0f;
+        animator.speed = 0f; // Animasyonları durdur
     }
 }
