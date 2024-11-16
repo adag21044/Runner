@@ -10,8 +10,11 @@ public abstract class Subject : MonoBehaviour
 
     public void RegisterObserver(Observer observer)
     {
-        observers.Add(observer); // Adds an observer to the list
-    }    
+        if (!observers.Contains(observer))
+        {
+            observers.Add(observer);
+        }
+    }   
 
     public void Start()
     {

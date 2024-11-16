@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private SwipeDetector swipeDetector;
     [SerializeField] private PlayerMovement player;
+    [SerializeField] private PlayerCollection playerCollection;
 
     private void Awake()
     {
@@ -15,7 +16,12 @@ public class GameManager : MonoBehaviour
             Debug.LogError("GameManager: Required components are missing!");
             return;
         }
-
+        
+        // Register PlayerCollection as an observer for collectibles
+        foreach (Coin coin in FindObjectsOfType<Coin>())
+        {
+            coin.RegisterObserver(playerCollection);
+        }
         // Register the player as an observer of swipe events
         swipeDetector.RegisterObserver(player);
     }
