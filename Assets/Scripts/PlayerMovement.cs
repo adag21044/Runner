@@ -11,7 +11,7 @@ public class PlayerMovement : Observer
     [SerializeField] private float forwardSpeed = 5f; // Forward movement speed
     [SerializeField] private float laneWidth = 2f; // Horizontal lane width
     [SerializeField] private float horizontalSpeed = 10f; // Side movement speed
-    [SerializeField] private float jumpForce = 2.5f; // Jump force
+    [SerializeField] private float jumpForce = 0.00f; // Jump force
     [SerializeField] private CameraFollow cameraFollow; // Camera controller reference
 
     private Vector3 targetPosition;
