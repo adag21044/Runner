@@ -17,7 +17,7 @@ public class Magnet : MonoBehaviour
             MagnetEffect magnetEffect = other.GetComponent<MagnetEffect>();
             if (magnetEffect != null)
             {
-                magnetEffect.ActivateMagnet(magnetRange, magnetDuration);
+                magnetEffect.ActivateMagnet(magnetRange, magnetDuration); // Magnet etkisini etkinleştir
             }
             else
             {

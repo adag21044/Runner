@@ -8,7 +8,8 @@ public class MagnetEffect : MonoBehaviour
 {
     private bool isMagnetActive = false; // Magnet etkisinin aktif olup olmadığını takip eder
     private float magnetRange;
-    private float pullSpeed = 10f; // Coinlerin çekilme hızı
+    private float pullSpeed = 20f; // Coinlerin çekilme hızı
+    private float remainingTime; // Geriye kalan süreyi takip eder
 
     /// <summary>
     /// Magnet etkisini belirli bir süreyle etkinleştirir.
@@ -18,7 +19,8 @@ public class MagnetEffect : MonoBehaviour
         if (!isMagnetActive)
         {
             magnetRange = range;
-            Debug.Log("MagnetEffect: Magnet activated.");
+            remainingTime = duration;
+            Debug.Log($"MagnetEffect: Magnet activated for {duration} seconds.");
             StartCoroutine(MagnetCoroutine(duration));
         }
     }
@@ -27,8 +29,11 @@ public class MagnetEffect : MonoBehaviour
     {
         isMagnetActive = true;
 
-        // Belirli süre boyunca magnet etkisi devam eder
-        yield return new WaitForSeconds(duration);
+        while (remainingTime > 0)
+        {
+            remainingTime -= Time.deltaTime; // Süreyi azalt
+            yield return null; // Bir sonraki frame'i bekle
+        }
 
         isMagnetActive = false;
         Debug.Log("MagnetEffect: Magnet deactivated.");
