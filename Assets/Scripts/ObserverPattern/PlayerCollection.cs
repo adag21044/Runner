@@ -6,6 +6,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerCollection : Observer
 {
+    [SerializeField] private AudioClip collectSound;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private ScoreManager scoreManager; // Reference to the score manager
     //[SerializeField] private ParticleSystem collectionEffect; // Optional collection effect
 
@@ -14,6 +16,14 @@ public class PlayerCollection : Observer
         if (scoreManager == null)
         {
             Debug.LogError("PlayerCollection: ScoreManager reference is missing!");
+        }
+
+        if (audioSource == null)
+        {
+             // Ses kaynağı arka plan müziğini etkilemesin diye yeni bir AudioSource oluşturuluyor
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.loop = false; // Koleksiyon sesi loop olmamalı
+            audioSource.playOnAwake = false; // Oyun başladığında çalmamalı
         }
     }
 
@@ -24,11 +34,15 @@ public class PlayerCollection : Observer
             Debug.Log("PlayerCollection: Coin collected!");
             scoreManager.AddScore(1); // Add score for coin collection
 
-            // Play collection effect if available
-            /*if (collectionEffect != null)
-            {
-                collectionEffect.Play();
-            }*/
+            PlayCollectSound();
+        }
+    }
+
+    private void PlayCollectSound()
+    {
+        if (collectSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(collectSound); // PlayOneShot ile mevcut arka plan müziğini etkilemeden çalar
         }
     }
 }
