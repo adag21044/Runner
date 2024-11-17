@@ -5144,7 +5144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3875886ff7787c840bfe778d4f8d6613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectSound: {fileID: 8300000, guid: 945d3ffaa1b0d23408f1055aa09c7f7a, type: 3}
+  coinCollectSound: {fileID: 8300000, guid: 945d3ffaa1b0d23408f1055aa09c7f7a, type: 3}
   audioSource: {fileID: 1123014037}
   scoreManager: {fileID: 649063468}
 --- !u!114 &1470247896

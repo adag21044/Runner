@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerCollection : Observer
 {
-    [SerializeField] private AudioClip collectSound;
+    [SerializeField] private AudioClip coinCollectSound;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private ScoreManager scoreManager; // Reference to the score manager
     //[SerializeField] private ParticleSystem collectionEffect; // Optional collection effect
@@ -40,9 +40,10 @@ public class PlayerCollection : Observer
 
     private void PlayCollectSound()
     {
-        if (collectSound != null && audioSource != null)
+        if (coinCollectSound != null && audioSource != null)
         {
-            audioSource.PlayOneShot(collectSound); // PlayOneShot ile mevcut arka plan müziğini etkilemeden çalar
+            Debug.Log("PlayerCollection: Playing collect sound.");
+            audioSource.PlayOneShot(coinCollectSound); // PlayOneShot ile mevcut arka plan müziğini etkilemeden çalar
         }
     }
 }
