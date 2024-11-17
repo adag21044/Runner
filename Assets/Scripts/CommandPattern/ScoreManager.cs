@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// Manages the player's score.
@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// </summary>
 public class ScoreManager : MonoBehaviour
 {
-    //[SerializeField] private Text scoreText; // UI element to display the score
+    [SerializeField] private TextMeshProUGUI scoreText; // UI element to display the score
     private int currentScore = 0;
 
     private void Start()
@@ -24,13 +24,13 @@ public class ScoreManager : MonoBehaviour
 
     private void UpdateScoreUI()
     {
-        /*if (scoreText != null)
+        if (scoreText != null)
         {
-            scoreText.text = $"Score: {currentScore}";
+            scoreText.text = currentScore.ToString();
         }
         else
         {
             Debug.LogWarning("ScoreManager: ScoreText reference is missing!");
-        }*/
+        }
     }
 }
