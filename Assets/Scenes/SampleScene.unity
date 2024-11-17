@@ -513,6 +513,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8a10fad05d4778645866cefb3fc40b93, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1470247895}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8a10fad05d4778645866cefb3fc40b93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1470247896}
   m_SourcePrefab: {fileID: 100100000, guid: 8a10fad05d4778645866cefb3fc40b93, type: 3}
 --- !u!1 &325248582
 GameObject:
@@ -739,7 +742,7 @@ GameObject:
   - component: {fileID: 358666893}
   m_Layer: 0
   m_Name: Coin (4)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1887,7 +1890,7 @@ GameObject:
   - component: {fileID: 902340488}
   m_Layer: 0
   m_Name: Coin (2)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2326,7 +2329,7 @@ GameObject:
   - component: {fileID: 1001713189}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2550,7 +2553,7 @@ GameObject:
   - component: {fileID: 1064358876}
   m_Layer: 0
   m_Name: Coin (3)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2669,7 +2672,7 @@ GameObject:
   - component: {fileID: 1241743941}
   m_Layer: 0
   m_Name: Coin (5)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3516,6 +3519,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 649063468}
+--- !u!114 &1470247896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470247888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d45ca22b484e8424bb235439e5308a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1505960576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3741,7 +3756,7 @@ GameObject:
   - component: {fileID: 1661938393}
   m_Layer: 0
   m_Name: Coin (1)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4289,7 +4304,7 @@ Transform:
   m_GameObject: {fileID: 6920381116993495806}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0010850518, y: 0.99847096, z: -0.051028434, w: 0.021231262}
-  m_LocalPosition: {x: -0.88, y: 1.06, z: 0.7847918}
+  m_LocalPosition: {x: -0.13, y: 0.82, z: -1.57}
   m_LocalScale: {x: 100.000046, y: 100.00002, z: 100.00003}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4442,6 +4457,8 @@ GameObject:
   - component: {fileID: 3106198657484710324}
   - component: {fileID: 8899371378125892820}
   - component: {fileID: 3936261275192786536}
+  - component: {fileID: 8899371378125892822}
+  - component: {fileID: 8899371378125892821}
   m_Layer: 0
   m_Name: U Shape Magnet
   m_TagString: Untagged
@@ -4457,6 +4474,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6920381116993495806}
   m_Mesh: {fileID: -6018116616557958203, guid: 65015e56cde235d40a5ef9aeb3d4d7e2, type: 3}
+--- !u!65 &8899371378125892821
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920381116993495806}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.002715112, y: 0.003563476, z: 0.0003996297}
+  m_Center: {x: -2.9425065e-13, y: 0.00063189835, z: -9.244745e-10}
+--- !u!114 &8899371378125892822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920381116993495806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b554d17f2386af49bb3f7204bf30d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnetRange: 5
+  magnetDuration: 5
 --- !u!33 &8932568862532304071
 MeshFilter:
   m_ObjectHideFlags: 0
