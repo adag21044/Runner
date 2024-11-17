@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 40258766}
   - component: {fileID: 40258765}
   m_Layer: 0
-  m_Name: Coin (12)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1069,7 +1069,7 @@ GameObject:
   - component: {fileID: 358666894}
   - component: {fileID: 358666893}
   m_Layer: 0
-  m_Name: Coin (4)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1188,7 +1188,7 @@ GameObject:
   - component: {fileID: 394423061}
   - component: {fileID: 394423060}
   m_Layer: 0
-  m_Name: Coin (9)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1412,7 +1412,7 @@ GameObject:
   - component: {fileID: 420067627}
   - component: {fileID: 420067626}
   m_Layer: 0
-  m_Name: Coin (15)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1791,7 +1791,7 @@ GameObject:
   - component: {fileID: 516877046}
   - component: {fileID: 516877045}
   m_Layer: 0
-  m_Name: Coin (7)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2128,7 +2128,7 @@ GameObject:
   - component: {fileID: 664600711}
   - component: {fileID: 664600710}
   m_Layer: 0
-  m_Name: Coin (8)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2762,7 +2762,7 @@ GameObject:
   - component: {fileID: 902340489}
   - component: {fileID: 902340488}
   m_Layer: 0
-  m_Name: Coin (2)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2880,7 +2880,7 @@ GameObject:
   - component: {fileID: 914978073}
   - component: {fileID: 914978072}
   m_Layer: 0
-  m_Name: Obstacle (2)
+  m_Name: Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3528,7 +3528,7 @@ GameObject:
   - component: {fileID: 1064358877}
   - component: {fileID: 1064358876}
   m_Layer: 0
-  m_Name: Coin (3)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3775,7 +3775,7 @@ GameObject:
   - component: {fileID: 1197389507}
   - component: {fileID: 1197389506}
   m_Layer: 0
-  m_Name: Coin (14)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3894,7 +3894,7 @@ GameObject:
   - component: {fileID: 1213084808}
   - component: {fileID: 1213084807}
   m_Layer: 0
-  m_Name: Coin (11)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4013,7 +4013,7 @@ GameObject:
   - component: {fileID: 1241743942}
   - component: {fileID: 1241743941}
   m_Layer: 0
-  m_Name: Coin (5)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4387,7 +4387,7 @@ GameObject:
   - component: {fileID: 1378377693}
   - component: {fileID: 1378377692}
   m_Layer: 0
-  m_Name: Obstacle (1)
+  m_Name: Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4598,7 +4598,7 @@ GameObject:
   - component: {fileID: 1423147900}
   - component: {fileID: 1423147899}
   m_Layer: 0
-  m_Name: Coin (10)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4822,7 +4822,7 @@ GameObject:
   - component: {fileID: 1456366086}
   - component: {fileID: 1456366085}
   m_Layer: 0
-  m_Name: Coin (6)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5277,7 +5277,7 @@ GameObject:
   - component: {fileID: 1528476589}
   - component: {fileID: 1528476588}
   m_Layer: 0
-  m_Name: Obstacle (3)
+  m_Name: Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5383,7 +5383,7 @@ GameObject:
   - component: {fileID: 1534079468}
   - component: {fileID: 1534079467}
   m_Layer: 0
-  m_Name: Coin (13)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5502,7 +5502,7 @@ GameObject:
   - component: {fileID: 1661938394}
   - component: {fileID: 1661938393}
   m_Layer: 0
-  m_Name: Coin (1)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5883,7 +5883,7 @@ GameObject:
   - component: {fileID: 2093265267}
   - component: {fileID: 2093265266}
   m_Layer: 0
-  m_Name: Coin (16)
+  m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
