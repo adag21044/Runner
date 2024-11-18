@@ -49,7 +49,7 @@ public class SwipeDetector : Subject
 
             if(Mathf.Abs(swipeDelta.x) < Mathf.Abs(swipeDelta.y))
             {
-                Notify(swipeDelta.y > 0 ? NotificationTypes.Up : NotificationTypes.Down);
+                Notify(swipeDelta.y > 0 ? NotificationTypes.Up : NotificationTypes.Slide);
             }
         }
     }

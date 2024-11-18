@@ -2,7 +2,8 @@ public enum NotificationTypes
 {
     Up, // Move forward
     Left, // Move left
-    Down, // Move backward
+    Slide, // Slide
     Right,  // Move right
-    Collect // Collectible interaction
+    Collect, // Collectible interaction
+
 }

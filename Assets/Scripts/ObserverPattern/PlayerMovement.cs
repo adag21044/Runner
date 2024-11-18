@@ -78,7 +78,16 @@ public class PlayerMovement : Observer
             case NotificationTypes.Right:
                 MoveRight();
                 break;
+            case NotificationTypes.Slide:
+                Slide();
+                break;    
         }
+    }
+
+    private void Slide()
+    {
+        Debug.Log("PlayerMovement: Slide triggered.");
+        animator.SetTrigger("Slide");
     }
 
     private void Jump()

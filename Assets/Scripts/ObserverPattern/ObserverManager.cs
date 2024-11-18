@@ -5,7 +5,6 @@ public class ObserverManager : MonoBehaviour
 {
     private static ObserverManager _instance;
     public static ObserverManager Instance => _instance;
-
     private readonly List<Subject> subjects = new List<Subject>();
 
     private void Awake()
