@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 /// <summary>
 /// Handles player movement, collision, and animations.
@@ -87,8 +88,36 @@ public class PlayerMovement : Observer
     private void Slide()
     {
         Debug.Log("PlayerMovement: Slide triggered.");
-        animator.SetTrigger("Slide");
+
+        // Start the Slide coroutine
+        StartCoroutine(SlideCoroutine());
     }
+
+    private IEnumerator SlideCoroutine()
+    {
+        // Save the original rotation
+        Quaternion originalRotation = playerTransform.rotation;
+
+        // Rotate the player to 90 degrees on the Y-axis
+        Quaternion slideRotation = Quaternion.Euler(playerTransform.eulerAngles.x, playerTransform.eulerAngles.y + 90f, playerTransform.eulerAngles.z);
+        playerTransform.rotation = slideRotation; // Apply the slide rotation
+        Debug.Log("Player rotated to 90 degrees.");
+
+        // Trigger the Slide animation
+        animator.SetTrigger("Slide");
+
+        // Wait for 4 seconds
+        yield return new WaitForSeconds(1.15f);
+
+        // Rotate the player back to the original rotation
+        playerTransform.rotation = originalRotation; // Restore the original rotation
+        Debug.Log("Player rotation reset to original orientation.");
+    }
+
+
+
+
+
 
     private void Jump()
     {
